@@ -93,9 +93,9 @@
             making things <strong>fast, reliable, and maintainable</strong>.
           </p>
           <p>
-            My work spans from building complete <strong>REST APIs</strong> with FastAPI and Express.js, to implementing
-            algorithms like K-means clustering from scratch. I believe in understanding what happens under the hood —
-            not just wiring libraries together.
+            My work spans from building complete <strong>REST APIs</strong> with Express.js and FastAPI, to implementing graph
+            algorithms like Kruskal's MST from scratch. I believe in understanding what happens under the hood — not
+            just wiring libraries together.
           </p>
           <p>
             Currently leveling up in <strong>distributed systems</strong> and exploring the intersection of <strong>ML
@@ -137,20 +137,22 @@
           <div class="tech-tags">
             <span class="tech-tag">TypeScript</span>
             <span class="tech-tag">Python</span>
-            <span class="tech-tag">JavaScript</span>
             <span class="tech-tag">Java</span>
             <span class="tech-tag">Go</span>
             <span class="tech-tag">SQL</span>
+            <span class="tech-tag">PL/pgSQL</span>
           </div>
         </div>
         <div class="stack-group">
           <div class="stack-group-title">// BACKEND</div>
           <div class="tech-tags">
-            <span class="tech-tag magenta">FastAPI</span>
             <span class="tech-tag magenta">Express</span>
+            <span class="tech-tag magenta">FastAPI</span>
             <span class="tech-tag magenta">Node.js</span>
             <span class="tech-tag magenta">REST APIs</span>
-            <span class="tech-tag magenta">JWT</span>
+            <span class="tech-tag magenta">Stored Procedures</span>
+            <span class="tech-tag magenta">NLP</span>
+            <span class="tech-tag magenta">LLMs</span>
           </div>
         </div>
         <div class="stack-group">
@@ -167,10 +169,11 @@
           <div class="stack-group-title">// TOOLS & INFRA</div>
           <div class="tech-tags">
             <span class="tech-tag">Docker</span>
-            <span class="tech-tag">Git</span>
-            <span class="tech-tag">Linux</span>
+            <span class="tech-tag">Docker Compose</span>
             <span class="tech-tag">Ollama</span>
-            <span class="tech-tag">LLMs/NLP</span>
+            <span class="tech-tag">Jira / Scrum</span>
+            <span class="tech-tag">JUnit</span>
+            <span class="tech-tag">Git</span>
           </div>
         </div>
       </div>
@@ -190,16 +193,19 @@
           <div class="corner-decor corner-tl"></div>
           <div class="corner-decor corner-br"></div>
           <div class="project-id">// PROJECT_001</div>
-          <h3 class="project-name">SIGRH</h3>
-          <p class="project-desc">Full-stack Human Resources Management System. Handles employees, payroll, attendance,
-            and organizational structure — the kind of domain complexity that exposes weak architecture fast.</p>
+          <h3 class="project-name">SIGRH+</h3>
+          <p class="project-desc">ERP/CRM system for HR management with integrated AI. Built in a 6-person Scrum team (5
+            sprints, Jira). Covers recruitment with NLP-based CV filtering, facial recognition attendance, payroll
+            automation, analytics, and an LLM-powered chatbot — all running fully offline.</p>
           <div class="project-challenge">
             <div class="project-challenge-label">TECHNICAL CHALLENGE</div>
-            <p>Modeling complex HR domain relationships with proper separation of concerns across a multi-module REST
-              API.</p>
+            <p>Building a modular NLP engine that processed hundreds of CVs in seconds against configurable
+              recruiter-defined tags, saving ~10 man-hours per recruitment cycle. LLM integration via Ollama kept
+              everything local — zero external API dependency.</p>
           </div>
           <div class="project-tech">
-            <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span><span>SQLAlchemy</span>
+            <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Ollama</span><span>NLP</span><span>Docker
+              Compose</span><span>Next.js</span>
           </div>
           <a href="https://github.com/nachosag/sigrh" target="_blank" class="project-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -216,16 +222,18 @@
           <div class="corner-decor corner-br"></div>
           <div class="project-id">// PROJECT_002</div>
           <h3 class="project-name">SIU GUARANÍ CLONE</h3>
-          <p class="project-desc">Reconstruction of Argentina's national university management system. Academic records,
-            enrollment, course management. Understanding legacy systems by rebuilding them is a different kind of
-            challenge.</p>
+          <p class="project-desc">Reconstruction of Argentina's national university management system. Enrollment,
+            correlative validation, grade management — the kind of domain where concurrent access isn't theoretical,
+            it's the entire problem.</p>
           <div class="project-challenge">
             <div class="project-challenge-label">TECHNICAL CHALLENGE</div>
-            <p>Reverse-engineering domain logic from real-world educational workflows and translating them into clean
-              data models.</p>
+            <p>Handling mass concurrent enrollment without race conditions. Business logic (correlatives, quotas) was
+              moved directly into PL/pgSQL Stored Procedures. SERIALIZABLE transactions guaranteed 100% data integrity.
+              Added a Go CLI for admin tasks and BoltDB for portable historical backups.</p>
           </div>
           <div class="project-tech">
-            <span>Backend</span><span>Go</span><span>SQL</span><span>Domain Modeling</span>
+            <span>Go</span><span>PostgreSQL</span><span>PL/pgSQL</span><span>BoltDB</span><span>CLI</span><span>Stored
+              Procedures</span>
           </div>
           <a href="https://github.com/nachosag/siu-guarani-clone" target="_blank" class="project-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -242,16 +250,18 @@
           <div class="corner-decor corner-br"></div>
           <div class="project-id">// PROJECT_003</div>
           <h3 class="project-name">HUMAN CLUSTERING</h3>
-          <p class="project-desc">K-means clustering applied to behavioral and demographic data. Building a clustering
-            pipeline from scratch — not just calling sklearn, but understanding the math and implementing control over
-            the algorithm.</p>
+          <p class="project-desc">Desktop app that groups people by affinity across 4 interest dimensions using weighted
+            graph theory. Similarity is computed via Manhattan distance, then Kruskal's algorithm builds an MST.
+            High-cost edges are pruned and BFS derives the final connected-component clusters.</p>
           <div class="project-challenge">
             <div class="project-challenge-label">TECHNICAL CHALLENGE</div>
-            <p>Implementing the full ML pipeline with custom preprocessing, distance metrics, and convergence evaluation
-              without over-relying on black-box libraries.</p>
+            <p>Implementing Kruskal's MST at O(E log E) and designing a SOLID architecture where the grouping engine is
+              fully decoupled from its data source — whether JSON files or manual UI input. 100% test coverage on all
+              core logic.</p>
           </div>
           <div class="project-tech">
-            <span>Python</span><span>NumPy</span><span>Scikit-learn</span><span>Data Analysis</span>
+            <span>Java</span><span>Graph Theory</span><span>Kruskal /
+              MST</span><span>BFS</span><span>JUnit</span><span>SOLID</span><span>Java Swing</span>
           </div>
           <a href="https://github.com/nachosag/human-clustering" target="_blank" class="project-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -267,25 +277,28 @@
           <div class="corner-decor corner-tl"></div>
           <div class="corner-decor corner-br"></div>
           <div class="project-id">// PROJECT_004</div>
-          <h3 class="project-name">BACKEND LAB</h3>
-          <p class="project-desc">Experimental backend architecture playground. Where patterns get tested before hitting
-            production. REST design, auth systems, middleware patterns — a living document of how backend thinking
-            evolves.</p>
+          <h3 class="project-name">CDM CALCULATOR</h3>
+          <p class="project-desc">Tool for finding the Minimum Dominating Set in large-scale graphs — an NP-Hard
+            optimization problem. Implements both exact Backtracking with recursion-tree pruning and Greedy Heuristics
+            for fast approximations. Includes an interactive graph editor built from scratch in Java AWT and a JUnit
+            stress testing suite.</p>
           <div class="project-challenge">
             <div class="project-challenge-label">TECHNICAL CHALLENGE</div>
-            <p>Building reusable patterns and exploring framework abstractions without losing sight of what actually
-              matters in production systems.</p>
+            <p>Pruning the recursion tree aggressively enough to process dense graph instances that would otherwise
+              exhaust memory. Balancing exact solutions (backtracking) vs. fast approximations (greedy) and exposing
+              both through a visual, interactive interface.</p>
           </div>
           <div class="project-tech">
-            <span>Express</span><span>TypeScript</span><span>PostgreSQL</span><span>Docker</span>
+            <span>Java</span><span>Backtracking</span><span>Greedy Heuristics</span><span>Java
+              AWT</span><span>GSON</span><span>JUnit</span>
           </div>
-          <a href="https://github.com/nachosag/backend-lab" target="_blank" class="project-link">
+          <a href="https://github.com/nachosag/cdm-calculator" target="_blank" class="project-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path
                 d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
               </path>
             </svg>
-            GITHUB/BACKEND-LAB
+            GITHUB/CDM-CALCULATOR
           </a>
         </div>
 
@@ -317,10 +330,11 @@
             <div class="repo-name">sigrh</div>
             <span class="repo-category cat-backend">BACKEND</span>
           </div>
-          <p class="repo-desc">HR management system with full REST API, employee records, attendance, and payroll
-            modules.</p>
+          <p class="repo-desc">ERP/CRM for HR with AI. NLP CV filtering, facial recognition attendance, LLM chatbot via
+            Ollama. Full offline, Scrum team of 6.</p>
           <div class="repo-stack">
-            <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span>
+            <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Ollama</span><span>NLP</span><span>Docker
+              Compose</span>
           </div>
           <div class="repo-link-row">
             <a href="https://github.com/nachosag/sigrh" target="_blank">
@@ -339,10 +353,11 @@
             <div class="repo-name">cdm-calculator</div>
             <span class="repo-category cat-algorithms">ALGORITHMS</span>
           </div>
-          <p class="repo-desc">Centesimal Degree Minute calculator. Precision coordinate computation and angle
-            conversion utilities.</p>
+          <p class="repo-desc">NP-Hard Minimum Dominating Set solver. Backtracking with pruning for exact solutions +
+            Greedy heuristics for fast approximations. Interactive graph editor in Java AWT.</p>
           <div class="repo-stack">
-            <span>Python</span><span>Math</span><span>Algorithms</span>
+            <span>Java</span><span>Backtracking</span><span>Greedy</span><span>Java
+              AWT</span><span>GSON</span><span>JUnit</span>
           </div>
           <div class="repo-link-row">
             <a href="https://github.com/nachosag/cdm-calculator" target="_blank">
@@ -361,10 +376,11 @@
             <div class="repo-name">human-clustering</div>
             <span class="repo-category cat-algorithms">ALGORITHMS</span>
           </div>
-          <p class="repo-desc">K-means clustering applied to human behavioral data. Custom pipeline with NumPy and
-            sklearn.</p>
+          <p class="repo-desc">Groups people by affinity using graph theory. Manhattan distance → complete weighted
+            graph → Kruskal MST → BFS component detection. SOLID architecture, 100% test coverage on core logic.</p>
           <div class="repo-stack">
-            <span>Python</span><span>NumPy</span><span>Scikit-learn</span><span>Pandas</span>
+            <span>Java</span><span>Graph Theory</span><span>Kruskal</span><span>BFS</span><span>JUnit</span><span>Java
+              Swing</span>
           </div>
           <div class="repo-link-row">
             <a href="https://github.com/nachosag/human-clustering" target="_blank">
@@ -383,10 +399,10 @@
             <div class="repo-name">lights-out-game</div>
             <span class="repo-category cat-games">GAMES</span>
           </div>
-          <p class="repo-desc">Implementation of the classic Lights Out puzzle game. Logic engine and state management
-            from scratch.</p>
+          <p class="repo-desc">Extended Lights Out puzzle in Java Swing. MVC architecture, inverse-disorder generation
+            to guarantee solvable levels, built-in optimal Solver, and JSON persistence for save states.</p>
           <div class="repo-stack">
-            <span>JavaScript</span><span>Game Logic</span><span>State Management</span>
+            <span>Java</span><span>Java Swing</span><span>MVC</span><span>GSON</span><span>Singleton</span>
           </div>
           <div class="repo-link-row">
             <a href="https://github.com/nachosag/lights-out-game" target="_blank">
@@ -400,15 +416,15 @@
           </div>
         </div>
 
-        <div class="repo-card" data-cat="experimentation">
+        <div class="repo-card" data-cat="experimentation backend">
           <div class="repo-header">
             <div class="repo-name">backend-lab</div>
             <span class="repo-category cat-experimentation">EXPERIMENTATION</span>
           </div>
-          <p class="repo-desc">Architecture patterns sandbox. Testing auth flows, middleware design, and API structure
-            before they go to prod.</p>
+          <p class="repo-desc">Backend patterns sandbox. Where architectural ideas get tested, broken, and validated
+            before they go anywhere near production.</p>
           <div class="repo-stack">
-            <span>NestJS</span><span>TypeScript</span><span>PostgreSQL</span><span>Docker</span>
+            <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Docker</span>
           </div>
           <div class="repo-link-row">
             <a href="https://github.com/nachosag/backend-lab" target="_blank">
@@ -422,13 +438,13 @@
           </div>
         </div>
 
-        <div class="repo-card" data-cat="academic">
+        <div class="repo-card" data-cat="academic algorithms">
           <div class="repo-header">
             <div class="repo-name">wonderland-challenge</div>
             <span class="repo-category cat-academic">ACADEMIC</span>
           </div>
-          <p class="repo-desc">Technical challenge project. Problem-solving under constraints — the kind of exercise
-            that reveals how you think under pressure.</p>
+          <p class="repo-desc">Technical challenge solved under constraints. The kind of exercise that reveals how you
+            reason about problems before reaching for a framework.</p>
           <div class="repo-stack">
             <span>Problem Solving</span><span>Algorithms</span>
           </div>
@@ -449,10 +465,11 @@
             <div class="repo-name">siu-guarani-clone</div>
             <span class="repo-category cat-academic">ACADEMIC</span>
           </div>
-          <p class="repo-desc">Rebuild of Argentina's university management system. Deep domain modeling and academic
-            workflow implementation.</p>
+          <p class="repo-desc">University management system clone. Business logic in PL/pgSQL Stored Procedures,
+            SERIALIZABLE transactions for concurrent enrollment, Go CLI for admin ops, BoltDB for historical backups.
+          </p>
           <div class="repo-stack">
-            <span>Backend</span><span>SQL</span><span>Domain Modeling</span><span>REST</span>
+            <span>Go</span><span>PostgreSQL</span><span>PL/pgSQL</span><span>BoltDB</span><span>CLI</span>
           </div>
           <div class="repo-link-row">
             <a href="https://github.com/nachosag/siu-guarani-clone" target="_blank">
