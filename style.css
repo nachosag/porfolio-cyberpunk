@@ -41,6 +41,35 @@ body {
   overflow-x: hidden;
 }
 
+/* ACCESSIBILITY & SCROLLBAR */
+::selection {
+  background: var(--magenta);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+  border-left: 1px solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-bright);
+  border: 1px solid var(--black);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyan);
+}
+
+:focus-visible {
+  outline: 2px dashed var(--cyan);
+  outline-offset: 4px;
+}
+
 /* SCANLINES OVERLAY */
 body::before {
   content: '';
